@@ -126,10 +126,7 @@ endif()
 
 # -march=native for GCC, Clang and ICC in any version that does support it.
 if ((NOT CRYPTOPP_CROSS_COMPILE) AND (CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU|Intel"))
-	CHECK_CXX_COMPILER_FLAG("-march=native" COMPILER_OPT_ARCH_NATIVE_SUPPORTED)
-	if (COMPILER_OPT_ARCH_NATIVE_SUPPORTED AND NOT CMAKE_CXX_FLAGS MATCHES "-march=")
-		SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
-	endif()
+        SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mtune=generic")
 endif()
 
 # Solaris specific 
